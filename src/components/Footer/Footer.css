@@ -1,0 +1,133 @@
+.footer {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer__credit {
+  padding-top: 32px;
+  padding-bottom: 26px;
+  padding-left: 104px;
+  max-width: 433px;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #B6BCBF;
+}
+
+.footer__links-list {
+  list-style-type: none;
+  padding-top: 30px;
+  padding-bottom: 26px;
+  padding-right: 106px;
+  margin: 0;
+  display: flex;
+  gap: 40px;
+}
+
+.footer__links {
+  text-decoration: none;
+  transition: 0.3s linear;
+  display: flex;
+  gap: 40px;
+}
+
+.footer__links:hover {
+  opacity: 0.8;
+}
+
+.footer__links-social {
+  display: flex;
+  gap: 26.89px;
+  transition: 0.3s linear;
+}
+
+.footer__links-social:hover {
+  opacity: 0.8;
+}
+
+.footer__links-link {
+  margin: 0;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #1A1B22;
+}
+
+.footer__link-social {
+  margin: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.footer__links-github {
+  background: url('../../images/github.png') no-repeat center/cover;
+}
+
+.footer__links-facebook {
+  background: url('../../images/facebook-square.png') no-repeat center/cover;
+}
+
+@media screen and (max-width: 900px) {
+  .footer {
+    max-width: 768px;
+  }
+
+  .footer__credit {
+    padding-left: 40px;
+    padding-top: 24px;
+    padding-bottom: 18px;
+  }
+
+  .footer__links-list {
+    padding-top: 21px;
+    padding-bottom: 19px;
+    padding-right: 21px;
+  }
+
+
+  .footer__links-facebook {
+    background: url('../../images/facebook-circle.png')  no-repeat center/cover;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .footer{
+    max-width: 320px;
+    flex-direction: column-reverse;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .footer__credit{
+    padding-left: 16px;
+    padding-top: 38px;
+    padding-bottom: 22px;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .footer__links-list{
+    padding-top: 20px;
+    padding-left: 16px;
+    justify-content: space-between;
+  }
+
+  .footer__links{
+    flex-direction: column;
+  }
+
+  .footer__links-social{
+    gap: 25px;
+  }
+
+  .footer__links-facebook {
+    background: url('../../images/facebook-square.png')  no-repeat center/cover;
+ }
+}

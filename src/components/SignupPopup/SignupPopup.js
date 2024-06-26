@@ -47,7 +47,6 @@ export default function SignupPopup(props) {
       setIsEmailValid(false);
     } else if (e.target.value.length === 0) {
       props.onValidityChangeEmail(true);
-
       setDisableButton(true);
       setIsEmailValid(false);
     }

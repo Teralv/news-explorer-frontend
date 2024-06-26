@@ -108,7 +108,7 @@ function App() {
   }
 
   function handleSignupSubmit(values) {
-    console.log(values);
+    console.log(typeof values.email);
     auth
       .register(values)
       .then(() => {

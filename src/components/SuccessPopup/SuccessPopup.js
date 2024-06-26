@@ -37,7 +37,7 @@ export default function SuccessPopup({ onClose, isOpen, openSigninPopup }) {
           <button type='button' className={'infotoolstip__close-button'} onClick={onClose}></button>
           <div className={'infotoolstip__content-container'}>
             <h3 className='infotoolstip__message'>¡El registro se ha completado con éxito!</h3>
-            <p className='infotoolstip__link' onClick={onLinkClick}>Inscribirse</p>
+            <p className='infotoolstip__link' onClick={onLinkClick}>Iniciar sesión</p>
           </div>
       </div>
     </section>

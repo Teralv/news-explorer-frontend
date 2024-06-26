@@ -6,15 +6,29 @@ import PageNotFound from '../PageNotFound/PageNotFound';
 
 export default function Main(props) {
 
+  const [arrayLength, setArrayLength] = React.useState(3);
   const [isShowMore, setIsShowMore] = React.useState(false);
+  const newsArticles = props.newsArticleArray;
+  const savedArticles = props.savedArticlesArray;
+  const arrayType = props.isSearchResults ? newsArticles : savedArticles;
+  const articleArray = arrayType === savedArticles ? savedArticles : newsArticles.slice(0, arrayLength);
 
   const buttonText = isShowMore ? 'Ver menos' : 'Ver más';
 
+  React.useEffect(() => {
+    setArrayLength(3);
+    setIsShowMore(false);
+  }, [newsArticles])
+
+  React.useEffect(() => {
+    if (arrayLength >= newsArticles.length) {
+      setIsShowMore(true)
+    }
+  }, [arrayLength, newsArticles.length])
+
   function handleButtonClick() {
-    if (!isShowMore) {
-        setIsShowMore(true);
-    } else {
-        setIsShowMore(false);
+    if (arrayLength < newsArticles.length) {
+      setArrayLength(arrayLength + 3);
     }
   }
 
@@ -29,13 +43,17 @@ export default function Main(props) {
                   <NewsCardsList
                     isSearchResults={props.isSearchResults}
                     isLoggedIn={props.isLoggedIn}
-                    newsArticleArray={props.newsArticleArray}
-                    isShowMore={isShowMore}/>
+                    onClickSave={props.onClickSave}
+                    keyword={props.keyword}
+                    onClickDelete={props.onClickDelete}
+                    savedArticlesArray={savedArticles}
+                    articleArray={articleArray}
+                    openSigninPopup={props.openSigninPopup}/>
                   <button type='button' className='main__button' onClick={handleButtonClick}>{buttonText}</button>
               </div>
             </div>
             :
-            <PageNotFound /> : ''}
+            <PageNotFound isServerError={props.isServerError}/> : ''}
       {props.children}
       <About />
     </main>

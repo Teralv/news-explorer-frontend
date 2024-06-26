@@ -9,8 +9,11 @@ import CurrentUserContext from '../../contexts/CurrentUserContext';
 
 export default function SavedNewsHeader(props) {
   const currentUser = React.useContext(CurrentUserContext);
-  //const fadeInCloseButtonClass = `${props.isOpen ? 'savedNewsHeader__nav-button_active' : ''}`;
-  const articlesKeywords = props.savedArticlesArray.slice(0, 2).map((article) => article.keyword + ' ,');
+  const fadeInCloseButtonClass = `${props.isOpen ? "savedNewsHeader__nav-button_active" : ""}`;
+  const articlesKeywords = props.savedArticlesArray.slice(0,2).map((article) => article.keyword + '');
+  const extraKeywords = props.savedArticlesArray.length === 3 ? 1 : props.savedArticlesArray.length < 4 ? 0 : props.savedArticlesArray.length - 2;
+  const areThereKeywords = props.savedArticlesArray.length === 0 ? 'Nada aún' : articlesKeywords + ' y ' + extraKeywords + ' más';
+
 
 
   function onNavClick() {
@@ -31,7 +34,7 @@ export default function SavedNewsHeader(props) {
             <img src={logoutIcon} alt='logout' className='savedNewsHeader__nav-logout' onClick={props.onSignoutClick}/>
           </button>
         </div>
-          <div className={`savedNewsHeader__nav-button `} onClick={props.onNavClick}>
+          <div className={`savedNewsHeader__nav-button ${fadeInCloseButtonClass}`} onClick={onNavClick}>
             <div className='savedNewsHeader__nav-button_line'></div>
             <div className='savedNewsHeader__nav-button_line'></div>
           </div>
@@ -41,7 +44,7 @@ export default function SavedNewsHeader(props) {
         <p className='savedNewsHeader__subtext'>Artículos guardados</p>
         <h5 className='savedNewsHeader__title'>{currentUser.name}, tienes {props.savedArticlesArray.length} artículos guardados</h5>
         <p className='savedNewsHeader__keywords'>Por palabras clave:
-          <span className='savedNewsHeader__keywords-bold'> {articlesKeywords} y {props.savedArticlesArray.length-2} más</span>
+          <span className='savedNewsHeader__keywords-bold'> {areThereKeywords}</span>
         </p>
       </div>
     </header>

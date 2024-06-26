@@ -34,6 +34,7 @@
 }
 
 .newsCard__keyword_active {
+  display: inline;
   visibility: visible;
 }
 

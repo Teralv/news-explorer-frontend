@@ -5,18 +5,20 @@ import NewsCard from '../NewsCard/NewsCard';
 
 export default function NewsCardsList(props) {
 
-  const arrayType = props.isSearchResults ?  props.newsArticleArray : props.savedArticlesArray
-  const arrayLength = props.isShowMore ? arrayType : arrayType.slice(0, 3);
-
   return (
     <section className='newsCardsList'>
       <ul className='newsCardsList__list'>
-        {arrayLength.map((card) => (
+        {props.articleArray.map((card) => (
           <NewsCard
-            key={nanoid()}
+            key={card._id || nanoid()}
             card={card}
             isSearchResults={props.isSearchResults}
             isLoggedIn={props.isLoggedIn}
+            onClickSave={props.onClickSave}
+            keyword={props.keyword}
+            onClickDelete={props.onClickDelete}
+            savedArticlesArray={props.savedArticlesArray}
+            openSigninPopup={props.openSigninPopup}
           />
         ))}
       </ul>

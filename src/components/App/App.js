@@ -61,6 +61,7 @@ function App() {
   function handleSignout() {
     localStorage.removeItem('jwt');
     setIsLoggedIn(false);
+    setIsSearchResults(false)
   }
 
   function handlePopupNavClick() {
@@ -142,6 +143,7 @@ function App() {
 
   const handleSaveClick = (card) => {
     const token = localStorage.getItem('jwt');
+
     mainApi
       .saveNewArticle(card, token)
       .then((newCard) => {
